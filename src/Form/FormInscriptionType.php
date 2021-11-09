@@ -86,6 +86,7 @@ class FormInscriptionType extends AbstractType
                 'attr'=>['placeholder'=>'votre titre (Maître, Dr etc.',
                     'class'=>'form-control'],
                 'label_attr'=>['class'=>'form-label'],
+                'required'=> false
             ])
         ;
     }
