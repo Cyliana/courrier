@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Destinataire{% endblock %}
+
+{% block body %}
+    <h1>Destinataire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ destinataire.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ destinataire.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ destinataire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ destinataire.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td>{{ destinataire.fonction }}</td>
+            </tr>
+            <tr>
+                <th>Dénomination</th>
+                <td>{{ destinataire.denomination }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ destinataire.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Code Postal</th>
+                <td>{{ destinataire.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Localité</th>
+                <td>{{ destinataire.localite }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ destinataire.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ destinataire.mail }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ destinataire.commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('destinataire_index') }}">Revenir à la liste</a>
+
+    <a href="{{ path('destinataire_edit', {'id': destinataire.id}) }}">Modifier</a>
+
+    {{ include('destinataire/_delete_form.html.twig') }}
+{% endblock %}

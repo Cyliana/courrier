@@ -34,13 +34,13 @@ class Suivi
 
     /**
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\OneToOne(targetEntity=Courrier::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Courrier::class, cascade={"persist", "remove"})
      */
     private $precedent;
 
     /**
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\OneToOne(targetEntity=Courrier::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Courrier::class, cascade={"persist", "remove"})
      */
     private $suivant;
 

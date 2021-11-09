@@ -4,4 +4,60 @@
 
 {% block body %}
 
+	<div class="container">
+		<h1>S'inscrire</h1>
+
+		{{ form_start(FormInscription) }}
+		<div class="row my-3">
+			<div class="col">
+				{{ form_row(FormInscription.username) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.password) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.titre) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.nom) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.prenom) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.adresse) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.codePostal) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.localite) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.mail) }}
+			</div>
+			<div class="col">
+				{{ form_row(FormInscription.telephone) }}
+			</div>
+		</div>
+		{% if app.user %}
+			<div class="row my-3">
+				<div class="col d-flex justify-content-end">
+					<button type="submit" class="btn btn-primary">Enregistrer les modifictaions</button>
+				</div>
+			</div>
+			<button><a href="{{ path('courrier_index') }}">Retour</a></button> 
+		{% else %}
+			<div class="row my-3">
+				<div class="col d-flex justify-content-end">
+					<button type="submit" class="btn btn-primary">S'enregistrer</button>
+				</div>
+			</div>
+			<div>
+				<a class="col d-flex justify-content-center" href="{{ path('app_login') }}">Se connecter</a>
+			</div>
+		{% endif %}
+			{{ form_end(FormInscription) }}
+		</div>
+
 {% endblock %}

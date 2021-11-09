@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes destinataires{% endblock %}
+
+{% block body %}
+    <h1>Mes destinataires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Fonction</th>
+                <th>Dénomination</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Localité</th>
+                <th>Téléphone</th>
+                <th>Mail</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for destinataire in destinataires %}
+            <tr>
+                <td>{{ destinataire.id }}</td>
+                <td>{{ destinataire.nom }}</td>
+                <td>{{ destinataire.prenom }}</td>
+                <td>{{ destinataire.fonction }}</td>
+                <td>{{ destinataire.denomination }}</td>
+                <td>{{ destinataire.adresse }}</td>
+                <td>{{ destinataire.codePostal }}</td>
+                <td>{{ destinataire.localite }}</td>
+                <td>{{ destinataire.telephone }}</td>
+                <td>{{ destinataire.mail }}</td>
+                <td>
+                    <a href="{{ path('destinataire_show', {'id': destinataire.id}) }}">Voir</a>
+                    <a href="{{ path('destinataire_edit', {'id': destinataire.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">Pas de destinataire trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('destinataire_new') }}">Nouveau destinataire</a>
+{% endblock %}

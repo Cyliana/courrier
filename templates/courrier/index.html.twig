@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes courriers{% endblock %}
+
+{% block body %}
+    <h1>Mes courriers</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Réf de l'annonce</th>
+                <th>Objet</th>
+                <th>Date de création</th>
+                <th>Date de modification</th>
+                <th>Date d'envoi</th>
+                <th>Date de relance</th>
+                <th>Nos réf</th>
+                <th>Vos réf</th>
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for courrier in courriers %}
+            <tr>
+                <td>{{ courrier.id }}</td>
+                <td>{{ courrier.refAnnonce }}</td>
+                <td>{{ courrier.objet }}</td>
+                <td>{{ courrier.dateCreation ? courrier.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ courrier.dateModification ? courrier.dateModification|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ courrier.dateEnvoi ? courrier.dateEnvoi|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ courrier.dateRelance ? courrier.dateRelance|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ courrier.nosRef }}</td>
+                <td>{{ courrier.vosRef }}</td>
+                <td>{{ courrier.statut }}</td>
+                <td>
+                    <a href="{{ path('courrier_show', {'id': courrier.id}) }}">Voir</a>
+                    <a href="{{ path('courrier_edit', {'id': courrier.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">Pas de courriers trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('courrier_new') }}">Créer courrier</a>
+{% endblock %}

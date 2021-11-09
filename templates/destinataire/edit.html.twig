@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier destinataire{% endblock %}
+
+{% block body %}
+    <h1>Modifier destinataire</h1>
+
+    {{ include('destinataire/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <button><a href="{{ path('destinataire_index') }}">Retour</a></button> 
+
+    {{ include('destinataire/_delete_form.html.twig') }}
+{% endblock %}

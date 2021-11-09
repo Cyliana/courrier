@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau destinataire{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau destinataire</h1>
+
+    {{ include('destinataire/_form.html.twig') }}
+
+    <a href="{{ path('destinataire_index') }}">Revenir à la liste</a>
+{% endblock %}

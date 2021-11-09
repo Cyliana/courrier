@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -15,6 +16,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    // const ROLES = [
+    //     'Administrateur' => 'ROLE_ADMIN',
+    //     'Utilisateur' => 'ROLE_USER'
+    // ];
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,6 +31,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true, name="identifiant")
+     * @Assert\Length(
+     * min = 3,
+     * max = 20,
+     * minMessage = "Votre identifiant doit faire au minimum {{ limit }} caractères",
+     * maxMessage = "Votre identifiant doit faire moins de {{ limit }} caractères")
      */
     private $username;
 
@@ -35,16 +47,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string", name="mot_de_passe")
+     * @Assert\Length(
+     * min = 8,
+     * max = 20,
+     * minMessage = "Votre mot de passe doit faire au minimum {{ limit }} caractères",
+     * maxMessage = "Votre identifiant doit faire moins de {{ limit }} caractères")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 2,
+     * max = 50,
+     * minMessage = "Votre nom doit faire au minimum {{ limit }} caractères",
+     * maxMessage = "Votre nom ne doit pas faire plus de {{ limit }} caractères")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 3,
+     * max = 50,
+     * minMessage = "Votre prénom doit faire au minimum {{ limit }} caractères",
+     * maxMessage = "Votre prénom ne doit pas faire plus de {{ limit }} caractères")
      */
     private $prenom;
 
@@ -56,6 +83,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
+
     private $codePostal;
 
     /**
@@ -332,5 +360,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
     }
 }

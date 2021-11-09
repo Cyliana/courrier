@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Courrier{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau courrier</h1>
+
+    {{ include('courrier/_form.html.twig') }}
+
+    <a href="{{ path('courrier_index') }}">Revenir à la liste</a>
+{% endblock %}

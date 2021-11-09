@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Courrier{% endblock %}
+
+{% block body %}
+    <h1>Modifier un Courrier</h1>
+
+    {{ include('courrier/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <button><a href="{{ path('courrier_index') }}">Retour</a></button> 
+
+    {{ include('courrier/_delete_form.html.twig') }}
+{% endblock %}

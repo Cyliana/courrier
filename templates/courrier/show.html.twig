@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Courrier{% endblock %}
+
+{% block body %}
+    <h1>Courrier</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ courrier.id }}</td>
+            </tr>
+            <tr>
+                <th>Ref Annonce</th>
+                <td>{{ courrier.refAnnonce }}</td>
+            </tr>
+            <tr>
+                <th>Objet</th>
+                <td>{{ courrier.objet }}</td>
+            </tr>
+            <tr>
+                <th>Date de creation</th>
+                <td>{{ courrier.dateCreation ? courrier.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de modification</th>
+                <td>{{ courrier.dateModification ? courrier.dateModification|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date d'envoi</th>
+                <td>{{ courrier.dateEnvoi ? courrier.dateEnvoi|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de relance</th>
+                <td>{{ courrier.dateRelance ? courrier.dateRelance|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nos Réf</th>
+                <td>{{ courrier.nosRef }}</td>
+            </tr>
+            <tr>
+                <th>Vos Réf</th>
+                <td>{{ courrier.vosRef }}</td>
+            </tr>
+            <tr>
+                <th>Paragraphe Je</th>
+                <td>{{ courrier.paragrapheJe }}</td>
+            </tr>
+            <tr>
+                <th>Paragraphe Vous</th>
+                <td>{{ courrier.paragrapheVous }}</td>
+            </tr>
+            <tr>
+                <th>Paragraphe Nous</th>
+                <td>{{ courrier.paragrapheNous }}</td>
+            </tr>
+            <tr>
+                <th>Formule de politesse</th>
+                <td>{{ courrier.paragraphePolitesse }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ courrier.statut }}</td>
+            </tr>
+            <tr>
+                <th>Copie de l'annonce</th>
+                <td>{{ courrier.copieAnnonce }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('courrier_index') }}">Revenir à la liste</a>
+
+    <a href="{{ path('courrier_edit', {'id': courrier.id}) }}">Modifier</a>
+
+    {{ include('courrier/_delete_form.html.twig') }}
+{% endblock %}

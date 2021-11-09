@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
@@ -13,6 +13,23 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
+
+    {% if app.user %} 
+        <header>
+            {% block header %}
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{{ path('courrier_index') }}">Mon compte</a>
+                        <a class="navbar-brand" href="{{ path('inscription_edit', {'id': app.user.id}) }}">Mes infos</a>
+                        <a class="navbar-brand" href="{{ path('destinataire_index') }}" >Mes destinataires</a>
+                        <a class="navbar-brand" href="{{ path('courrier_index') }}">Mes courriers</a>
+                        <a class="btn btn-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
+                    </div>
+                </nav>
+            <div>Bonjour {{ app.user.username }}</div>
+            {% endblock %}
+        </header>
+    {% endif %}
     <body>
         {% block body %}{% endblock %}
     </body>
